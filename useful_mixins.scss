@@ -1,0 +1,682 @@
+//-----------------------------------
+//  Hover Mixins: Setup
+//-----------------------------------
+
+@mixin hvr-setup {
+  transform: perspective(1px) translateZ(0);
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+}
+
+@mixin keyframes($name) {
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@keyframes hvr-bob-float {
+  100% {
+    transform: translateY(-8px);
+  }
+}
+
+
+
+//-----------------------------------
+//  Hover Mixins:
+//-----------------------------------
+
+@mixin hvr- ($textColor, $bgColor, $duration, $easing) {
+  @include hvr-setup;
+  transition-duration: $duration;
+  transition-timing-function: $easing;
+}
+
+// Example of use
+
+.btn--bx-trs-b {
+  border: 1px solid $brand_gold;
+  background: transparent;
+  color: $brand_blue;
+  font-family: $secondary_font;
+  @include hvr-fade(#fff, #171030, .6s, ease-in);
+}
+
+
+//-----------------------------------
+//  Nav Burger Mixins
+//-----------------------------------
+
+
+//-----------------------------------
+//  Center slips out to the left
+//  <div class="btn--brg">
+//    <span></span>
+//    <span></span>
+//    <span></span>
+//  </div>
+//-----------------------------------
+@mixin brg-slip() {
+  width: 35px;
+  position: relative;
+  transform: rotate(0deg);
+  transition: .5s ease-in-out;
+  height: 22px;
+  cursor: pointer;
+  span {
+    display: block;
+    position: absolute;
+    height: 2px;
+    width: 100%;
+    background: #120c2e;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    transform: rotate(0deg);
+    transition: .25s ease-in-out;
+  }
+  span:nth-child(1) {
+    top: 0px;
+  }
+  span:nth-child(2) {
+    top: 9px;
+  }
+  span:nth-child(3) {
+    top: 18px;
+  }
+  .is-menu-open & span:nth-child(1) {
+    top: 9px;
+    transform: rotate(135deg);
+    background: #fff;
+  }
+  .is-menu-open & span:nth-child(2) {
+    opacity: 0;
+    left: -20px;
+  }
+  .is-menu-open & span:nth-child(3) {
+    top: 9px;
+    transform: rotate(-135deg);
+    background: #fff;
+  }
+}
+
+//-----------------------------------
+//  Center span splits in half and fades outward
+//  <div class="btn--brg">
+//    <span></span>
+//    <span></span>
+//    <span></span>
+//    <span></span>
+//    <span></span>
+//    <span></span>
+//  </div>
+//-----------------------------------
+@mixin brg-split() {
+  width: 60px;
+  height: 45px;
+  position: relative;
+  margin: 50px auto;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+  span {
+    display: block;
+    position: absolute;
+    height: 9px;
+    width: 50%;
+    background: #d3531a;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .25s ease-in-out;
+    -moz-transition: .25s ease-in-out;
+    -o-transition: .25s ease-in-out;
+    transition: .25s ease-in-out;
+  }
+  span:nth-child(even) {
+    left: 50%;
+    border-radius: 0 9px 9px 0;
+  }
+  span:nth-child(odd) {
+    left:0px;
+    border-radius: 9px 0 0 9px;
+  }
+  span:nth-child(1), span:nth-child(2) {
+    top: 0px;
+  }
+  span:nth-child(3), span:nth-child(4) {
+    top: 18px;
+  }
+  span:nth-child(5), span:nth-child(6) {
+    top: 36px;
+  }
+  .is-menu-open & span:nth-child(1), .is-menu-open & span:nth-child(6) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  .is-menu-open & span:nth-child(2), .is-menu-open & span:nth-child(5) {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+  .is-menu-open & span:nth-child(1) {
+    left: 5px;
+    top: 7px;
+  }
+  .is-menu-open & span:nth-child(2) {
+    left: calc(50% - 5px);
+    top: 7px;
+  }
+  .is-menu-open & span:nth-child(3) {
+    left: -50%;
+    opacity: 0;
+  }
+  .is-menu-open & span:nth-child(4) {
+    left: 100%;
+    opacity: 0;
+  }
+  .is-menu-open & span:nth-child(5) {
+    left: 5px;
+    top: 29px;
+  }
+  .is-menu-open & span:nth-child(6) {
+    left: calc(50% - 5px);
+    top: 29px;
+  }
+}
+
+//-----------------------------------
+//  Center splits into X, top/bottom fade
+//  <div class="btn--brg">
+//    <span></span>
+//    <span></span>
+//    <span></span>
+//    <span></span>
+//  </div>
+//-----------------------------------
+@mixin brg-cntr-split() {
+  width: 60px;
+  height: 45px;
+  position: relative;
+  margin: 50px auto;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+  span {
+    display: block;
+    position: absolute;
+    height: 9px;
+    width: 100%;
+    background: #d3531a;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .25s ease-in-out;
+    -moz-transition: .25s ease-in-out;
+    -o-transition: .25s ease-in-out;
+    transition: .25s ease-in-out;
+  }
+
+  span:nth-child(1) {
+    top: 0px;
+  }
+
+  span:nth-child(2), span:nth-child(3) {
+    top: 18px;
+  }
+
+  span:nth-child(4) {
+    top: 36px;
+  }
+
+  .is-menu-open & span:nth-child(1) {
+    top: 18px;
+    width: 0%;
+    left: 50%;
+  }
+
+  .is-menu-open & span:nth-child(2) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  .is-menu-open & span:nth-child(3) {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+
+  .is-menu-open & span:nth-child(4) {
+    top: 18px;
+    width: 0%;
+    left: 50%;
+  }
+}
+
+//-----------------------------------
+//  Center fades, right side of top/bottom fold in to form x
+//  <div class="btn--brg">
+//    <span></span>
+//    <span></span>
+//    <span></span>
+//  </div>
+//-----------------------------------
+@mixin brg-cntr-fade() {
+  width: 60px;
+  height: 45px;
+  position: relative;
+  margin: 50px auto;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  transform: rotate(0deg);
+  -webkit-transition: .5s ease-in-out;
+  -moz-transition: .5s ease-in-out;
+  -o-transition: .5s ease-in-out;
+  transition: .5s ease-in-out;
+  cursor: pointer;
+  span {
+    display: block;
+    position: absolute;
+    height: 9px;
+    width: 100%;
+    background: #d3531a;
+    border-radius: 9px;
+    opacity: 1;
+    left: 0;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .25s ease-in-out;
+    -moz-transition: .25s ease-in-out;
+    -o-transition: .25s ease-in-out;
+    transition: .25s ease-in-out;
+  }
+  span:nth-child(1) {
+    top: 0px;
+    -webkit-transform-origin: left center;
+    -moz-transform-origin: left center;
+    -o-transform-origin: left center;
+    transform-origin: left center;
+  }
+  span:nth-child(2) {
+    top: 18px;
+    -webkit-transform-origin: left center;
+    -moz-transform-origin: left center;
+    -o-transform-origin: left center;
+    transform-origin: left center;
+  }
+  span:nth-child(3) {
+    top: 36px;
+    -webkit-transform-origin: left center;
+    -moz-transform-origin: left center;
+    -o-transform-origin: left center;
+    transform-origin: left center;
+  }
+  .is-menu-open & span:nth-child(1) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+    top: -3px;
+    left: 8px;
+  }
+  .is-menu-open & span:nth-child(2) {
+    width: 0%;
+    opacity: 0;
+  }
+  .is-menu-open & span:nth-child(3) {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    top: 39px;
+    left: 8px;
+  }
+}
+
+
+//-----------------------------------
+//  Grid Mixins
+//-----------------------------------
+
+
+// Column - Quarter
+@mixin column-quarter {
+  .grid-item__inner {
+    display: block;
+    width: 100%;
+    @include mediaMin($break-col-quarter-2) {
+      display: inline-block;
+      width: 48.4%;
+      margin-left: 0.8%;
+      margin-right: 0.8%;
+    }
+    @include mediaMin($break-col-quarter-4) {
+      width: 23.4%;
+    }
+  }
+}
+
+// Column - Half
+@mixin column-half {
+  .grid-item__inner {
+    display: block;
+    width: 100%;
+  }
+  @include mediaMin($bp-tablet) {
+    .grid-item__inner {
+      display: inline-block;
+      width: 50%;
+      margin-left: 0%;
+      margin-right: 0%;
+    }
+  }
+}
+// Column - Third
+@mixin column-third {
+  .grid-item__inner {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  @include mediaMin($break-col-third-2) {
+    .grid-item__inner {
+      display: inline-block;
+      width: 31.73%;
+      margin-left: 0.8%;
+      margin-right: 0.8%;
+    }
+  }
+}
+
+// Column - Third
+@mixin column-third-nopad {
+  .grid-item__inner {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    @include mediaMin($break-col-third-2) {
+      display: inline-block;
+      width: 33.3%;
+    }
+  }
+}
+
+
+
+// Column - Sixth
+@mixin column-sixth {
+  .grid-item__inner {
+    display: block;
+    width: 100%;
+    @include mediaMin($break-col-sixth-2) {
+      display: inline-block;
+      width: 48.4%;
+      margin-left: 0.8%;
+      margin-right: 0.8%;
+    }
+    @include mediaMin($break-col-sixth-3) {
+      width: 31.73%;
+    }
+    @include mediaMin($break-col-sixth-6) {
+      width: 15%;
+    }
+  }
+}
+// Column - Fifth
+@mixin column-fifth {
+  .grid-item__inner {
+    margin-bottom: 10px;
+    display: inline-block;
+    width: 48.4%;
+    width: calc( 50% - 10px);
+    margin-left: 5px;
+    margin-right: 5px;
+    @include mediaMin($bp-tablet) {
+      width: 31.73%;
+      width: calc( 33% - 10px);
+    }
+    @include mediaMin($bp-tablet-xl) {
+      width: 18.4%;
+      width: calc( 20% - 10px);
+    }
+  }
+}
+
+
+//-----------------------------------
+//  Media Query Mixins
+//-----------------------------------
+
+// Min-Width:
+@mixin mediaMin($minWidth) {
+  @media (min-width: $minWidth) {
+    @content;
+  }
+}
+// Max-Width:
+@mixin mediaMax($minWidth) {
+  $maxWidth: ($minWidth - 0.01px);
+  @media (max-width: $maxWidth) {
+    @content;
+  }
+}
+// Min Width & Max-Width:
+@mixin mediaBound($minWidth, $maxWidth) {
+  $max: ($maxWidth - 0.01px);
+  @media (min-width: $minWidth) and (max-width: $max) {
+    @content;
+  }
+}
+
+
+//-----------------------------------
+//  Pseudo Element Mixins
+//-----------------------------------
+
+// Apply standard pseudo element styling
+@mixin pseudo($display: block, $pos: absolute, $content: ''){
+    content: $content;
+    display: $display;
+    position: $pos;
+}
+
+
+//------ Triangles ------//
+//  Include triangle within a pseudo element and add positioning properties (ie. top, left)
+//    $direction: up, down, left, right
+//    $size: Width at base of triangle
+//    $height: Decimal (0-1). Proportion of height to $size
+//    $offset: Pixels, closer to (+) or further from (-) parent
+//    $color: Triangle color
+//  Usage: @include triange (up, 6px .5, 1, #c00);
+@mixin triangle($direction, $size: 6px, $height: 0.5, $offset: 1, $color: #222222) {
+  position: relative;
+  @if ($direction == "up") {
+    &:after {
+      position: absolute;
+      top: -$size + $offset;
+      right: 0;
+      left: 0;
+
+      display: block;
+
+      width: 0;
+      height: 0;
+      margin: 0 auto;
+
+      content: "";
+
+      border-right: $height*$size solid transparent;
+      border-bottom: $size solid $color;
+      border-left: $height*$size solid transparent;
+    }
+  }
+  @else if ($direction == "down") {
+    &:after {
+      position: absolute;
+      right: 0;
+      bottom: -$size + $offset;
+      left: 0;
+
+      display: block;
+
+      width: 0;
+      height: 0;
+      margin: 0 auto;
+
+      content: "";
+
+      border-top: $size solid $color;
+      border-right: $height*$size solid transparent;
+      border-left: $height*$size solid transparent;
+    }
+  }
+  @else if ($direction == "left") {
+    &:after {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -$size + $offset;
+
+      display: block;
+
+      width: 0;
+      height: 0;
+      margin: auto;
+
+      content: "";
+
+      border-top: $height*$size solid transparent;
+      border-right: $size solid $color;
+      border-bottom: $height*$size solid transparent;
+    }
+  }
+  @else if ($direction == "right") {
+    &:after {
+      position: absolute;
+      top: 0;
+      right: -$size + $offset;
+      bottom: 0;
+
+      display: block;
+
+      width: 0;
+      height: 0;
+      margin: auto;
+
+      content: "";
+
+      border-top: $height*$size solid transparent;
+      border-bottom: $height*$size solid transparent;
+      border-left: $size solid $color;
+    }
+  }
+}
+
+//-----------------------------------
+//  Positioning Mixins
+//-----------------------------------
+
+// Absolute position element to cover whole parent
+@mixin cover($top: 0, $right : 0, $bottom : 0, $left : 0) {
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+// Position element shorthand
+@mixin position($type, $top: null, $right: null, $bottom: null, $left: null) {
+    position: $type;
+    top: $top;
+    bottom: $bottom;
+    right: $right;
+    left: $left;
+}
+
+// Add auto left & right margins without mucking up top & bottom margins
+@mixin center-margin {
+    margin: {
+        left: auto;
+        right: auto;
+    }
+}
+
+// Center element vertically & horizontally in parent
+@mixin center-element {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+// Center element vertically in parent
+@mixin center-vertical {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+// Expand Div to fill remaining width
+// Add to expanded div. Must be second div
+@mixin sticky-expand {
+  overflow: hidden;
+}
+// Left Stick: Add to stuck div. Must be first div
+@mixin sticky-left-fixed {
+  float: left;
+}
+// Right Stick: Add to stuck div. Must be first div
+@mixin sticky-right-fixed {
+  float: right;
+}
+
+//-----------------------------------
+//  Font Mixins
+//-----------------------------------
+
+
+// Calculate Font Size, line height, and letter spacing in Rems
+// Usage: @include font-size(14, 16, 24)
+@mixin font-size($size, $height: null, $spacing: null) {
+  font-size: $size * 1px;
+  font-size: rem($size);
+  @if $height != null {
+    line-height: $height * 1px;
+    line-height: rem($height);
+  }
+  @if $spacing != null {
+    letter-spacing: $spacing / 1000  * $size * 1px;
+    letter-spacing: $spacing / 1000  * $size / $base-font-size * 1rem;
+  }
+}
