@@ -24,7 +24,7 @@ Excerpt from Ellani Cars - front-page_vehicles.php
 
 </article>
 
-
+<style>
 .o-background {
   height: 100%;
   width: 100%;
@@ -78,3 +78,4 @@ Excerpt from Ellani Cars - front-page_vehicles.php
   background-position: center center;
   background-size: contain;
 }
+</style>

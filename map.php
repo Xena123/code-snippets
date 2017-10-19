@@ -1,3 +1,6 @@
+Map excerpt from Funds Library
+<!-- Black and white google map 
+with custom icon -->
 <div class="l-constrained">
   <div id="google-map" class="map">
     <script>
