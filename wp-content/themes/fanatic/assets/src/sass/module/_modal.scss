@@ -1,0 +1,17 @@
+/*------------------------------------|
+|	Modal                               |
+|------------------------------------*/
+
+.modal--nugget {
+  position: fixed;
+  display: none;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  z-index: 9999999;
+}
+
+.modal--nugget.is-visible {
+  display: block;
+}

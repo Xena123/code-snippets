@@ -1,0 +1,34 @@
+/*------------------------------------|
+|	Icons                               |
+|------------------------------------*/
+
+// Config Module
+$icn-bgcolor: $colour-body;
+$icn-fontcolor: $colour-text-body;
+
+// Module Styling
+.icn {
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+
+.icn--16 {
+  height: 16px;
+  width: 16px;
+}
+
+
+// Sprite Variant
+.icn--sprite {
+  background: url('../img/icon/sprite.png') no-repeat;
+  line-height: 0;
+}
+
+.icn--sprite-fb {
+  background-position: 20px 20px;
+}
+
+.icn--sprite-li {
+  background-position: 0px 0px;
+}

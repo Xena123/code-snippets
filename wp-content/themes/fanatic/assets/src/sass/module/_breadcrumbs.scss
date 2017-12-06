@@ -1,0 +1,19 @@
+/*------------------------------------|
+|	Breadcrumbs                         |
+|------------------------------------*/
+
+// Module Styling
+.breadcrumbs {
+  text-align: center;
+  text-transform: uppercase;
+  li {
+    display: inline-block;
+    vertical-align: middle; 
+  }
+}
+
+// Module States
+.breadcrumbs .is-active a {
+  color: red;
+  font-weight: $bold;
+}

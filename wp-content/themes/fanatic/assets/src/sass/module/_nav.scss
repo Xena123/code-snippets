@@ -1,0 +1,100 @@
+/*------------------------------------|
+|	Nav Links                           |
+|------------------------------------*/
+
+
+
+.nav__container {
+  float: right;
+  display: inline-block;
+  @include mediaMax($bp-nav) {
+    position: absolute;
+    left: 100%;
+    right: -100%;
+    top: 88px;
+    bottom: 0;
+    transition: left .6s ease-in, right .6s ease-in;
+    background-color: rgba(2,51,57,.9);
+    z-index: z('nav');
+    transition-delay: .4s;
+  }
+}
+
+.nav {
+  li {
+    display: inline-block;
+    line-height: 45px;
+  }
+  a {
+    @include font-size(16,16);
+  }
+}
+
+.nav--header {
+  li {
+    border-radius: 100px;
+    margin: 0 7.5px;
+  }
+  a {
+    padding: 7.5px 4px;
+    border-radius: 30px;
+  }
+  @include mediaMin($bp-tablet-xl) {
+    li {
+      margin: 0 15px;
+    }
+    a {
+      padding: 7.5px 13px;
+    }
+  }
+  @include mediaMax($bp-nav) {
+    position: relative;
+    left: 100%;
+    transition: left .6s ease-in;
+    transition-delay: 0s;
+    padding: 20px;
+    a {
+      color: #fff;
+      @include font-size(18,18);
+      padding: 7.5px 13px;
+    }
+    li {
+      display: block;
+      line-height: 55px;
+    }
+  }
+}
+
+.nav--footer {
+  li {
+    margin: 0 13.5px;
+  }
+  a {
+    line-height: 50px;
+  }
+}
+
+// Module States
+.nav--header .is-active {
+  a {
+    background-color: red;
+    color: #fff;
+  }
+}
+
+
+@include mediaMax($bp-nav) {
+  .is-menu-open {
+    .nav__container {
+      left: 0;
+      right: 0;
+      transition: left .6s ease-out, right .6s ease-out;
+      transition-delay: 0s;
+    }
+    .nav {
+      left: 0;
+      transition: left .6s ease-out;
+      transition-delay: .4s;
+    }
+  }
+}

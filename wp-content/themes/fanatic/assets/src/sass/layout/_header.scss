@@ -1,0 +1,65 @@
+/*------------------------------------|
+|	Site Header                         |
+|------------------------------------*/
+
+.l-header {
+  background-color: $colour-header;
+  color: $colour-text-header;
+  padding: 25px 0 16px;
+  height: 88px;
+  a {
+    color: $colour-text-header;
+  }
+}
+
+.l-header__logo {
+  display: inline-block;
+}
+
+.l-header__wrap {
+  @include mediaMin($bp-nav) {
+    @include clearfix;
+  }
+}
+
+.l-header__logo {
+  width: 150px;
+  height: 45px;
+  background: transparent url('../img/logos/logo.png') no-repeat center center;
+  background-size: contain;
+  color: #fff;
+  @include mediaMax($bp-tablet) {
+    margin-left: 15px;
+  }
+}
+
+.l-header__brg {
+  display: none;
+  @include mediaMax($bp-nav) {
+    display: inline-block;
+    float: right;
+  }
+}
+
+.is-shrunk.l-header {
+  @include mediaMin($bp-phone-l) {
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 57px;
+  }
+}
+
+.is-sticky.l-header {
+  @include mediaMin($bp-phone-l) {
+    .l-header__bg {
+      background-color: rgba(0,72,96,.85);
+      position: fixed;
+      left: 0;
+      right: 0;
+
+    }
+  }
+}

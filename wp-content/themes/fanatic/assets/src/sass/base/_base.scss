@@ -1,0 +1,90 @@
+/*------------------------------------|
+|	Base                                |
+|------------------------------------*/
+
+body {
+  font-family: $font-alpha;
+  @include font-size($base-font-size);
+  font-weight: $normal;
+  overflow-x: hidden;
+  color: $colour-text-body;
+  background-color: $colour-body;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+  height: auto;
+}
+
+* {
+  //@include box-sizing($box-model);
+}
+
+a {
+  text-decoration: none;
+}
+
+p {
+}
+
+span {
+}
+
+li {
+}
+
+h1, h2, h3, h4, h5, h6 {
+}
+
+h1 {
+}
+
+h2 {
+}
+
+h3 {
+}
+
+h4 {
+}
+
+h5 {
+}
+
+h6 {
+}
+
+em {
+  font-style: italic;
+}
+
+strong {
+  font-weight: $bold;
+}
+
+u {
+  text-decoration: underline;
+}
+
+button,
+input {
+  padding: 5px;
+  //@include input-reset;
+}
+
+input {
+}
+
+button {
+  &:focus,
+  &:active {
+    outline: none;
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}

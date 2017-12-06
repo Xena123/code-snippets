@@ -1,0 +1,18 @@
+/*------------------------------------|
+|	Social                              |
+|------------------------------------*/
+
+
+.social {
+  li {
+    display: inline-block;
+    margin-right: 18px;
+    &:last-child {
+      margin-left: 0;
+    }
+  }
+  i {
+    color: #fff;
+    @include font-size(20);
+  }
+}

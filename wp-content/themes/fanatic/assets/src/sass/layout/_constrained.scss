@@ -1,0 +1,20 @@
+/*------------------------------------|
+|	Content Wrap                        |
+|------------------------------------*/
+
+/*---- Limits width of content, adds side padding, & allows background colours to extend to screen edge ----*/
+
+.l-constrained {
+  position: relative;
+  max-width: $max_width;
+  margin: 0 auto;
+  padding-right: 2.5%;
+  padding-left: 2.5%;
+  padding-right: calc(2.5% + 15px);
+  padding-left: calc(2.5% + 15px);
+}
+
+.l-constrained--grid {
+  padding-right: 2.5%;
+  padding-left: 2.5%;
+}

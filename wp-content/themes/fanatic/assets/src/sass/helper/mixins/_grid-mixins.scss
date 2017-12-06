@@ -1,0 +1,160 @@
+//-----------------------------------
+//	Grid Mixins
+//-----------------------------------
+
+// Column - Full
+@mixin column-full {
+  .grid-item__inner {
+    display: block;
+    width: 100%;
+    @include mediaMin($break-col-quarter-2) {
+      width: 99%;
+      width: calc(100% - 15px);
+      margin-left: 7.5px;
+      margin-right: 7.5px;
+    }
+  }
+}
+
+// Column - Quarter
+@mixin column-quarter {
+  .grid-item__inner {
+    display: block;
+    width: 100%;
+    @include mediaMin($break-col-quarter-2) {
+      display: inline-block;
+      width: 48.4%;
+      width: calc(50% - 15px);
+      margin-left: 7.5px;
+      margin-right: 7.5px;
+
+    }
+    @include mediaMin($break-col-quarter-4) {
+      width: 23.4%;
+      width: calc(25% - 15px);
+    }
+  }
+}
+// Column - Half
+@mixin column-half {
+  .grid-item__inner {
+    display: block;
+    width: 100%;
+    @include mediaMin($break-col-quarter-2) {
+      width: 98%;
+      width: calc(100% - 15px);
+      margin-left: 7.5px;
+      margin-right: 7.5px;
+    }
+    @include mediaMin($break-col-half-2) {
+      display: inline-block;
+      width: 48.4%;
+      width: calc(50% - 15px);
+    }
+  }
+}
+// Column - Third
+@mixin column-third {
+  .grid-item__inner {
+    display: block;
+    width: 100%;
+  }
+  @include mediaMin($break-col-third-2) {
+    .grid-item__inner {
+      display: inline-block;
+      width: 31.73%;
+      width: calc(33.3% - 15px);
+      margin-left: 7.5px;
+      margin-right: 7.5px;
+    }
+  }
+}
+
+// Column - Two Thirds
+@mixin column-two-third {
+  .grid-item__inner {
+    display: block;
+    width: 100%;
+  }
+  @include mediaMin($bp-tablet) {
+    .grid-item__inner {
+      display: inline-block;
+      width: 63.46%;
+      width: calc(66.6% - 15px);
+      margin-left: 7.5px;
+      margin-right: 7.5px;
+    }
+  }
+}
+
+
+// Column - Third
+@mixin column-third-nopad {
+  .grid-item__inner {
+    display: block;
+    width: 100%;
+    @include mediaMin($break-col-third-2) {
+      display: inline-block;
+      width: 33.3%;
+    }
+  }
+}
+
+@mixin column-three-quarter {
+  .grid-item__inner {
+    display: block;
+    width: 100%;
+    @include mediaMin($break-col-quarter-2) {
+      display: block;
+      width: 98%;
+      width: calc(100% - 15px);
+      margin-left: 7.5px;
+      margin-right: 7.5px;
+
+    }
+    @include mediaMin($break-col-quarter-4) {
+      width: 73.9%;
+      width: calc(75% - 15px);
+    }
+  }
+}
+
+
+// Column - Sixth
+@mixin column-sixth {
+  .grid-item__inner {
+    display: block;
+    width: 100%;
+    @include mediaMin($break-col-sixth-2) {
+      display: inline-block;
+      width: 48.4%;
+      margin-left: 7.5px;
+      margin-right: 7.5px;
+    }
+    @include mediaMin($break-col-sixth-3) {
+      width: 31.73%;
+    }
+    @include mediaMin($break-col-sixth-6) {
+      width: 15%;
+    }
+  }
+}
+// Column - Fifth
+@mixin column-fifth {
+  .grid-item__inner {
+    display: block;
+    width: 100%;
+    @include mediaMin($break-col-fifth-2) {
+      display: inline-block;
+      width: 48.4%;
+      margin-left: 7.5px;
+      margin-right: 7.5px;
+    }
+    @include mediaMin($break-col-fifth-3) {
+      width: 31.73%;
+    }
+    @include mediaMin($break-col-fifth-5) {
+      width: 18.4%;
+    }
+  }
+}
