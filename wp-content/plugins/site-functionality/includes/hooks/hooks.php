@@ -49,14 +49,3 @@ add_action( 'pre_get_posts', 'my_change_sort_order');
 //To keep the count accurate, lets get rid of prefetching
 remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 
-
-
-function fl_track_post_views ($post_id) {
-  if ( !is_single() ) return;
-  if ( empty ( $post_id) ) {
-      global $post;
-      $post_id = $post->ID;
-  }
-  fl_set_post_views($post_id);
-}
-add_action( 'wp_head', 'fl_track_post_views');

@@ -16,7 +16,6 @@ require_once( plugin_dir_path( __FILE__ ) . 'includes/meta.php' );
 require_once( plugin_dir_path( __FILE__ ) . 'includes/post-types.php');
 require_once( plugin_dir_path( __FILE__ ) . 'includes/taxonomy.php');
 require_once( plugin_dir_path( __FILE__ ) . 'includes/custom-fields.php' );
-require_once( plugin_dir_path( __FILE__ ) . 'includes/login.php' );
 foreach (glob(plugin_dir_path( __FILE__ ) . "includes/functions/*.php") as $filename) {
   require_once $filename;
 }
