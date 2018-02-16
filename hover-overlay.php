@@ -1,4 +1,4 @@
-Excerpt from Ellani Cars - front-page_vehicles.php
+<!-- Excerpt from Ellani Cars - front-page_vehicles.php -->
 
 <article class="o-content-block-wrap o-content-block-third-width--homepage">
 

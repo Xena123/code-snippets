@@ -1,3 +1,5 @@
+// Used on Clic Sargent Ecard
+
 // When you click on the img, find the src and save the path, run the function
 $("#isotope a").click(function () {
   var imagePath = $(this).find("img").first().attr("src").replace("_thumb");
